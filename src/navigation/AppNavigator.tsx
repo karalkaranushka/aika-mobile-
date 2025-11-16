@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import SplashScreen from '../features/splash/SplashScreen';
-import HomeScreen from '../features/home/components/HomeScreen';
+import BottomTabNavigatorUI from '../app/navigation/bottomtabnavigator/BottomTabNavigatorUI';
 
 const Stack = createStackNavigator();
 
@@ -11,7 +11,7 @@ const AppNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Splash" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Splash" component={SplashScreen} />
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Home" component={BottomTabNavigatorUI} />
       </Stack.Navigator>
     </NavigationContainer>
   );
