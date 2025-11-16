@@ -10,7 +10,10 @@ import { colors } from '../../../theme/HomeTheme';
 
 export default function HomeScreen() {
   const { messages, send } = useChat([
-    { id: 'init', text: "Hello! I'm your AI assistant. How can I help you today?", outgoing: false },
+    { id: 'init', 
+      text: "Hello! I'm your AI assistant. How can I help you today?", 
+      outgoing: false 
+    },
   ]);
 
   return (
@@ -24,15 +27,24 @@ export default function HomeScreen() {
             <ChatBubble key={m.id} text={m.text} outgoing={!!m.outgoing} />
           ))}
         </View>
-
-        <MessageInput onSend={send} />
       </ScrollView>
+
+      <View style={styles.inputContainer}>
+        <MessageInput onSend={send} />
+      </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.gradientStart },
-  container: { paddingBottom: 20 },
+  container: { paddingBottom: 100 },
   chatArea: { marginTop: 12, paddingHorizontal: 16 },
+  inputContainer: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: 'transparent',
+  },
 });

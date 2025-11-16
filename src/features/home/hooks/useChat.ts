@@ -9,9 +9,12 @@ export default function useChat(initial: Message[] = []) {
     const msg: Message = { id: String(Date.now()), text, outgoing: true };
     setMessages((m) => [...m, msg]);
 
-    // simulate bot reply
     setTimeout(() => {
-      setMessages((m) => [...m, { id: String(Date.now() + 1), text: `Echo: ${text}`, outgoing: false }]);
+      setMessages((m) => [...m, 
+        { id: String(Date.now() + 1), 
+          text: `Echo: ${text}`, 
+          outgoing: false 
+        }]);
     }, 700);
   }, []);
 

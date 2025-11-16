@@ -12,6 +12,19 @@ const SendIcon = () => (
   </Svg>
 );
 
+const MicIcon = () => (
+  <Svg width={20} height={20} viewBox="0 0 24 24" fill="none">
+    <Path
+      d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"
+      fill="#fff"
+    />
+    <Path
+      d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"
+      fill="#fff"
+    />
+  </Svg>
+);
+
 export default function MessageInput({ onSend }: { onSend: (text: string) => void }) {
   const [text, setText] = useState('');
 
@@ -19,6 +32,10 @@ export default function MessageInput({ onSend }: { onSend: (text: string) => voi
     if (!text.trim()) return;
     onSend(text.trim());
     setText('');
+  };
+
+  const record = () => {
+    console.log('Recording voice...');
   };
 
   return (
@@ -30,7 +47,10 @@ export default function MessageInput({ onSend }: { onSend: (text: string) => voi
         placeholderTextColor={colors.textMuted}
         style={styles.input}
       />
-      <TouchableOpacity style={styles.iconBtn} onPress={send}>
+      <TouchableOpacity style={styles.micBtn} onPress={record}>
+        <MicIcon />
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.sendBtn} onPress={send}>
         <SendIcon />
       </TouchableOpacity>
     </View>
@@ -46,18 +66,29 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    padding: 14,
+    padding: 18,
+    paddingVertical: 18,
     borderRadius: 30,
     backgroundColor: 'rgba(255,255,255,0.03)',
     color: colors.textPrimary,
-    marginRight: 10,
+    marginRight: 6,
   },
-  iconBtn: {
+  micBtn: {
+    width: 52,
+    height: 52,
+    borderRadius: 26,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#007AFF',
+    marginLeft: 8,
+  },
+  sendBtn: {
     width: 52,
     height: 52,
     borderRadius: 26,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#7c3aed',
+    marginLeft: 8,
   },
 });
